@@ -12,7 +12,7 @@ Die Projektdateien sind wie folgt organisiert:
 ```
 ├── app.js            # Hauptserverdatei für die Express-Anwendung
 ├── index.html        # HTML-Datei für das Frontend
-├── package.json      # Enthält die Projektinformationen und Abhängigkeiten
+└── package.json      # Enthält die Projektinformationen und Abhängigkeiten
 ```
 
 ## Installation
@@ -53,7 +53,3 @@ Stelle sicher, dass die folgenden Softwarekomponenten auf deinem System installi
 ## Nutzung
 
 Nach dem Start der Anwendung kannst du Benutzer erstellen, anzeigen, aktualisieren und löschen. Die Änderungen werden direkt in der MongoDB-Datenbank gespeichert.
-
-## Lizenz
-
-Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen findest du in der Datei `LICENSE`.
