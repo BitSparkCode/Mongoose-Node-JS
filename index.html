@@ -10,6 +10,7 @@
     <form id="userForm">
         <input type="text" id="name" placeholder="Name" required>
         <input type="email" id="email" placeholder="Email" required>
+        <input type="color" id="color" required> <!-- Hinzugefügt: Farbfeld -->
         <button type="submit">Add User</button>
     </form>
     <ul id="usersList"></ul>
@@ -18,12 +19,13 @@
             e.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const color = document.getElementById('color').value;
             await fetch('/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `name=${name}&email=${email}`,
+                body: `name=${name}&email=${email}&color=${color}`,
             });
             loadUsers();
         });
@@ -36,6 +38,7 @@
             users.forEach(user => {
                 const listItem = document.createElement('li');
                 listItem.textContent = `${user.name} (${user.email})`;
+                listItem.style.color = user.color; // Textfarbe setzen
                 const updateButton = document.createElement('button');
                 updateButton.textContent = 'Update';
                 updateButton.addEventListener('click', () => updateUser(user._id));
@@ -51,13 +54,14 @@
         async function updateUser(id) {
             const newName = prompt('Enter new name:');
             const newEmail = prompt('Enter new email:');
+            const newColor = prompt('Enter new color (hex value):');
             if (newName && newEmail) {
                 await fetch(`/user/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: `name=${newName}&email=${newEmail}`,
+                    body: `name=${newName}&email=${newEmail}&color=${newColor}`,
                 });
                 loadUsers();
             }

@@ -8,7 +8,8 @@ mongoose.connect('mongodb://localhost/simplecrud', {useNewUrlParser: true, useUn
  
 const userSchema = new mongoose.Schema({
   name: String,
-  email: String
+  email: String,
+  color: String // Hinzugefügt: Farbfeld
 });
  
 const User = mongoose.model('User', userSchema);
